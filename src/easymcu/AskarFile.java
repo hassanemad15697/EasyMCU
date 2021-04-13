@@ -41,7 +41,6 @@ public class AskarFile {
             }
             fr.close();
             br.close();
-
         } catch (IOException ex) {
         }
     }
