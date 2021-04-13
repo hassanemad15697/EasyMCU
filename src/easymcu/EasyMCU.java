@@ -7,8 +7,6 @@ package easymcu;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -26,12 +24,12 @@ public class EasyMCU extends javax.swing.JFrame {
 
     public EasyMCU() {
         initComponents();
-        logoLabel.setIcon(new ImageIcon("Images/EasyMCU_Logo.png"));
-        newProjectIconLabel.setIcon(new ImageIcon("Images/new.png"));
-        calculatorIconLabel.setIcon(new ImageIcon("Images/calc.png"));
-        learnIconLabel.setIcon(new ImageIcon("Images/learn.png"));
-        openProjectIconLabel.setIcon(new ImageIcon("Images/open.png"));
-        aboutIconLabel.setIcon(new ImageIcon("Images/about.png"));
+        logoLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//EasyMCU_Logo.png")));
+        newProjectIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//new.png")));
+        calculatorIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//calc.png")));
+        learnIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//learn.png")));
+        openProjectIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//open.png")));
+        aboutIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//about.png")));
         updateTable();
     }
 
