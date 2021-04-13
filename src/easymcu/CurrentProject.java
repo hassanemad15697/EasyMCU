@@ -31,7 +31,7 @@ public class CurrentProject extends javax.swing.JFrame {
      */
     public CurrentProject(String Location, String Name) {
         initComponents();
-         AVRIcon.setIcon(new ImageIcon("Images/ATmega32_DIO.png"));
+         AVRIcon.setIcon(new ImageIcon(getClass().getResource("..//Images//ATmega32_DIO.png")));
         this.setTitle(Name);
         currentFile = Location;
         projectNameLabel.setText(Name);
