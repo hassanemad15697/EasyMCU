@@ -31,7 +31,7 @@ public class CurrentProject extends javax.swing.JFrame {
      */
     public CurrentProject(String Location, String Name) {
         initComponents();
-         AVRIcon.setIcon(new ImageIcon(getClass().getResource("..//Images//ATmega32_DIO.png")));
+         AVRIcon.setIcon(new ImageIcon(("../src/Images/ATmega32_DIO.png")));
         this.setTitle(Name);
         currentFile = Location;
         projectNameLabel.setText(Name);
@@ -2032,7 +2032,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PD3_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD3_LabelMouseClicked
         togglePinDirection(PD3_Label, 27);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(27, PD3_Label), 27);
     }//GEN-LAST:event_PD3_LabelMouseClicked
 
     private void PD3_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD3_LabelMouseMoved
@@ -2045,7 +2044,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PD2_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD2_LabelMouseClicked
         togglePinDirection(PD2_Label, 26);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(26, PD2_Label), 26);
     }//GEN-LAST:event_PD2_LabelMouseClicked
 
     private void PD2_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD2_LabelMouseMoved
@@ -2058,7 +2056,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PD1_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD1_LabelMouseClicked
         togglePinDirection(PD1_Label, 25);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(25, PD1_Label), 25);
     }//GEN-LAST:event_PD1_LabelMouseClicked
 
     private void PD1_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD1_LabelMouseMoved
@@ -2071,7 +2068,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PD0_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD0_LabelMouseClicked
         togglePinDirection(PD0_Label, 24);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(24, PD0_Label), 24);
     }//GEN-LAST:event_PD0_LabelMouseClicked
 
     private void PD0_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD0_LabelMouseMoved
@@ -2084,7 +2080,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC7_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC7_LabelMouseClicked
         togglePinDirection(PC7_Label, 23);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(23, PC7_Label), 23);
     }//GEN-LAST:event_PC7_LabelMouseClicked
 
     private void PC7_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC7_LabelMouseMoved
@@ -2097,7 +2092,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC6_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC6_LabelMouseClicked
         togglePinDirection(PC6_Label, 22);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(22, PC6_Label), 22);
     }//GEN-LAST:event_PC6_LabelMouseClicked
 
     private void PC6_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC6_LabelMouseMoved
@@ -2110,7 +2104,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC5_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC5_LabelMouseClicked
         togglePinDirection(PC5_Label, 21);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(21, PC5_Label), 21);
     }//GEN-LAST:event_PC5_LabelMouseClicked
 
     private void PC5_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC5_LabelMouseMoved
@@ -2123,7 +2116,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC4_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC4_LabelMouseClicked
         togglePinDirection(PC4_Label, 20);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(20, PC4_Label), 20);
     }//GEN-LAST:event_PC4_LabelMouseClicked
 
     private void PC4_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC4_LabelMouseMoved
@@ -2136,7 +2128,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC3_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC3_LabelMouseClicked
         togglePinDirection(PC3_Label, 19);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(19, PC3_Label), 19);
     }//GEN-LAST:event_PC3_LabelMouseClicked
 
     private void PC3_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC3_LabelMouseMoved
@@ -2149,7 +2140,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC2_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC2_LabelMouseClicked
         togglePinDirection(PC2_Label, 18);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(18, PC2_Label), 18);
     }//GEN-LAST:event_PC2_LabelMouseClicked
 
     private void PC2_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC2_LabelMouseMoved
@@ -2162,7 +2152,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC1_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC1_LabelMouseClicked
         togglePinDirection(PC1_Label, 17);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(17, PC1_Label), 17);
     }//GEN-LAST:event_PC1_LabelMouseClicked
 
     private void PC1_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC1_LabelMouseMoved
@@ -2175,7 +2164,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PC0_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC0_LabelMouseClicked
         togglePinDirection(PC0_Label, 16);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(16, PC0_Label), 16);
     }//GEN-LAST:event_PC0_LabelMouseClicked
 
     private void PC0_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PC0_LabelMouseMoved
@@ -2188,7 +2176,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB7_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB7_LabelMouseClicked
         togglePinDirection(PB7_Label, 15);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(15, PB7_Label), 15);
     }//GEN-LAST:event_PB7_LabelMouseClicked
 
     private void PB7_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB7_LabelMouseMoved
@@ -2201,7 +2188,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB6_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB6_LabelMouseClicked
         togglePinDirection(PB6_Label, 14);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(14, PB6_Label), 14);
     }//GEN-LAST:event_PB6_LabelMouseClicked
 
     private void PB6_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB6_LabelMouseMoved
@@ -2214,7 +2200,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB5_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB5_LabelMouseClicked
         togglePinDirection(PB5_Label, 13);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(13, PB5_Label), 13);
     }//GEN-LAST:event_PB5_LabelMouseClicked
 
     private void PB5_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB5_LabelMouseMoved
@@ -2227,7 +2212,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB4_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB4_LabelMouseClicked
         togglePinDirection(PB4_Label, 12);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(12, PB4_Label), 12);
     }//GEN-LAST:event_PB4_LabelMouseClicked
 
     private void PB4_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB4_LabelMouseMoved
@@ -2240,7 +2224,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB3_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB3_LabelMouseClicked
         togglePinDirection(PB3_Label, 11);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(11, PB3_Label), 11);
     }//GEN-LAST:event_PB3_LabelMouseClicked
 
     private void PB3_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB3_LabelMouseMoved
@@ -2253,7 +2236,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB2_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB2_LabelMouseClicked
         togglePinDirection(PB2_Label, 10);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(10, PB2_Label), 10);
     }//GEN-LAST:event_PB2_LabelMouseClicked
 
     private void PB2_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB2_LabelMouseMoved
@@ -2266,7 +2248,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB1_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB1_LabelMouseClicked
         togglePinDirection(PB1_Label, 9);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(9, PB1_Label), 9);
     }//GEN-LAST:event_PB1_LabelMouseClicked
 
     private void PB1_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB1_LabelMouseMoved
@@ -2279,7 +2260,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PB0_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB0_LabelMouseClicked
         togglePinDirection(PB0_Label, 8);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(8, PB0_Label), 8);
     }//GEN-LAST:event_PB0_LabelMouseClicked
 
     private void PB0_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB0_LabelMouseMoved
@@ -2293,7 +2273,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PA7_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA7_LabelMouseClicked
         togglePinDirection(PA7_Label, 7);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(7, PA7_Label), 7);
     }//GEN-LAST:event_PA7_LabelMouseClicked
 
     private void PA7_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA7_LabelMouseMoved
@@ -2306,7 +2285,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PA6_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA6_LabelMouseClicked
         togglePinDirection(PA6_Label, 6);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(6, PA6_Label), 6);
     }//GEN-LAST:event_PA6_LabelMouseClicked
 
     private void PA6_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA6_LabelMouseMoved
@@ -2319,7 +2297,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PA5_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA5_LabelMouseClicked
         togglePinDirection(PA5_Label, 5);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(5, PA5_Label), 5);
     }//GEN-LAST:event_PA5_LabelMouseClicked
 
     private void PA5_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA5_LabelMouseMoved
@@ -2332,7 +2309,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PA4_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA4_LabelMouseClicked
         togglePinDirection(PA4_Label, 4);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(4, PA4_Label), 4);
     }//GEN-LAST:event_PA4_LabelMouseClicked
 
     private void PA4_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA4_LabelMouseMoved
@@ -2345,7 +2321,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PA3_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA3_LabelMouseClicked
         togglePinDirection(PA3_Label, 3);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(3, PA3_Label), 3);
     }//GEN-LAST:event_PA3_LabelMouseClicked
 
     private void PA3_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA3_LabelMouseMoved
@@ -2358,7 +2333,6 @@ public class CurrentProject extends javax.swing.JFrame {
 
     private void PA2_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA2_LabelMouseClicked
         togglePinDirection(PA2_Label, 2);
-        DVP.setLabelColorBeforeChange(Dio.togglePinDirection(2, PA2_Label), 2);
     }//GEN-LAST:event_PA2_LabelMouseClicked
 
     private void PA2_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PA2_LabelMouseMoved
