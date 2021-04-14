@@ -84,7 +84,7 @@ public class ADC extends UpdateDriver {
     private String config[] = {ADC_VOLTAGE_REFERENCE.AVCC.toString(), ADC_ADJUSTMENT.RIGHT_ADJUSTMENT.toString(), ADC_AUTO_TRIGGER_SOURCE.FREE_RUNNING_MODE.toString(), ADC_PRESCALLER.DIVID_BY_128.toString(), ADC_CHANNEL_NUMBER.DIO_U8_PIN_0.toString()};
     //Elements Names
     private String element[] = {"VOLTAGE_REFERENCE", "ADJUSTMENT", "ADC_AUTO_TRIGGER_SOURCE", "ADC_PRESCALLER", "ADC_CHANNEL_NUMBER"};
-     private String CurrentFile;
+    private String CurrentFile;
 
     /**
      * Constructor Sets element value by determining pin number and its value
@@ -99,13 +99,13 @@ public class ADC extends UpdateDriver {
      * @param chnl An ADC_CHANNEL_NUMBER enum object that will hold the new
      * value.
      */
-    ADC(ADC_VOLTAGE_REFERENCE voltRef, ADC_ADJUSTMENT adj, ADC_AUTO_TRIGGER_SOURCE trig, ADC_PRESCALLER presclr, ADC_CHANNEL_NUMBER chnl,String  currentFile ) {
+    ADC(ADC_VOLTAGE_REFERENCE voltRef, ADC_ADJUSTMENT adj, ADC_AUTO_TRIGGER_SOURCE trig, ADC_PRESCALLER presclr, ADC_CHANNEL_NUMBER chnl, String currentFile) {
         config[0] = voltRef.toString();
         config[1] = adj.toString();
         config[2] = trig.toString();
         config[3] = presclr.toString();
         config[4] = chnl.toString();
-        CurrentFile=currentFile;
+        CurrentFile = currentFile;
     }
 
     /**
@@ -114,10 +114,11 @@ public class ADC extends UpdateDriver {
      *
      */
     public void updateADCDriver() {
-        super.updateDriver("ADC_config.h", element.length, element, config,CurrentFile);
+        super.updateDriver("ADC_config.h", element.length, element, config, CurrentFile);
     }
+
     public void getDriverElementsValues() {
-        config = getDriverInfo("ADC_config.h", element.length, element,CurrentFile);
+        config = getDriverInfo("ADC_config.h", element.length, element, CurrentFile);
 
     }
 }
