@@ -24,12 +24,12 @@ public class EasyMCU extends javax.swing.JFrame {
 
     public EasyMCU() {
         initComponents();
-        logoLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//EasyMCU_Logo.png")));
-        newProjectIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//new.png")));
-        calculatorIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//calc.png")));
-        learnIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//learn.png")));
-        openProjectIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//open.png")));
-        aboutIconLabel.setIcon(new ImageIcon(getClass().getResource("..//Images//about.png")));
+        logoLabel.setIcon(new ImageIcon(("../src/Images/EasyMCU_Logo.png")));
+        newProjectIconLabel.setIcon(new ImageIcon(("../src//Images/new.png")));
+        calculatorIconLabel.setIcon(new ImageIcon(("../src/Images/calc.png")));
+        learnIconLabel.setIcon(new ImageIcon(("../src/Images/learn.png")));
+        openProjectIconLabel.setIcon(new ImageIcon (("../src/Images/open.png")));
+        aboutIconLabel.setIcon(new ImageIcon(("../src/Images/about.png")));
         updateTable();
     }
 
@@ -423,6 +423,7 @@ public class EasyMCU extends javax.swing.JFrame {
 
         jTable1.setBackground(new java.awt.Color(254, 254, 254));
         jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -238,7 +238,7 @@ public class NewProject extends javax.swing.JFrame {
                     String Location = (String) projectLocationTextField.getText() + "/" + projectNameTextField.getText(), Name = (String) projectNameTextField.getText();
 
                     aFile.saveIntoAAskarFile(projectNameTextField.getText(), projectLocationTextField.getText(), projectVersionTextField.getText());
-                    File source = new File("Default Drivers");
+                    File source = new File("../src/Default Drivers");
                     FileUtils.copyDirectory(source, file);
                     CurrentProject project = new CurrentProject(Location,Name);
                     project.setVisible(true);

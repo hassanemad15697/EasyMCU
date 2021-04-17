@@ -511,7 +511,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="fe" red="fe" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="PB2"/>
+                    <Property name="text" type="java.lang.String" value="PB3"/>
                     <Property name="name" type="java.lang.String" value="PB3" noResource="true"/>
                   </Properties>
                   <Events>
@@ -528,7 +528,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="fe" red="fe" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="PB2"/>
+                    <Property name="text" type="java.lang.String" value="PB4"/>
                     <Property name="name" type="java.lang.String" value="PB4" noResource="true"/>
                   </Properties>
                   <Events>
@@ -545,7 +545,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="fe" red="fe" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="PB2"/>
+                    <Property name="text" type="java.lang.String" value="PB5"/>
                     <Property name="name" type="java.lang.String" value="PB5" noResource="true"/>
                   </Properties>
                   <Events>
@@ -562,7 +562,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="fe" red="fe" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="PB2"/>
+                    <Property name="text" type="java.lang.String" value="PB6"/>
                     <Property name="name" type="java.lang.String" value="PB6" noResource="true"/>
                   </Properties>
                   <Events>
@@ -579,7 +579,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fe" green="fe" red="fe" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="PB2"/>
+                    <Property name="text" type="java.lang.String" value="PB7"/>
                     <Property name="name" type="java.lang.String" value="PB7" noResource="true"/>
                   </Properties>
                   <Events>

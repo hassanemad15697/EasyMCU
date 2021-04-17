@@ -416,7 +416,7 @@ public class CurrentProject extends javax.swing.JFrame {
 
         PB3_Label.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         PB3_Label.setForeground(new java.awt.Color(254, 254, 254));
-        PB3_Label.setText("PB2");
+        PB3_Label.setText("PB3");
         PB3_Label.setName("PB3"); // NOI18N
         PB3_Label.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -434,7 +434,7 @@ public class CurrentProject extends javax.swing.JFrame {
 
         PB4_Label.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         PB4_Label.setForeground(new java.awt.Color(254, 254, 254));
-        PB4_Label.setText("PB2");
+        PB4_Label.setText("PB4");
         PB4_Label.setName("PB4"); // NOI18N
         PB4_Label.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -452,7 +452,7 @@ public class CurrentProject extends javax.swing.JFrame {
 
         PB5_Label.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         PB5_Label.setForeground(new java.awt.Color(254, 254, 254));
-        PB5_Label.setText("PB2");
+        PB5_Label.setText("PB5");
         PB5_Label.setName("PB5"); // NOI18N
         PB5_Label.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -470,7 +470,7 @@ public class CurrentProject extends javax.swing.JFrame {
 
         PB6_Label.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         PB6_Label.setForeground(new java.awt.Color(254, 254, 254));
-        PB6_Label.setText("PB2");
+        PB6_Label.setText("PB6");
         PB6_Label.setName("PB6"); // NOI18N
         PB6_Label.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -488,7 +488,7 @@ public class CurrentProject extends javax.swing.JFrame {
 
         PB7_Label.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         PB7_Label.setForeground(new java.awt.Color(254, 254, 254));
-        PB7_Label.setText("PB2");
+        PB7_Label.setText("PB7");
         PB7_Label.setName("PB7"); // NOI18N
         PB7_Label.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -2011,7 +2011,7 @@ public class CurrentProject extends javax.swing.JFrame {
     }//GEN-LAST:event_PD5_LabelMouseClicked
 
     private void PD5_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD5_LabelMouseMoved
-        DVP.movingMouseStyle(PD5_Label, labelMovingColor, Dio.getPinColor(29), 29);
+       DVP.movingMouseStyle(PD5_Label, labelMovingColor, Dio.getPinColor(29), 29);
     }//GEN-LAST:event_PD5_LabelMouseMoved
 
     private void PD4_LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD4_LabelMouseExited

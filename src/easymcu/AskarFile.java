@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class AskarFile {
 
     public void insertDataToTable(JTable table) {
-        String askarFilePath = "EasyMCU.askar";
+        String askarFilePath = "../src/EasyMCU.askar";
         List<String> lines = new ArrayList<>();
         String line = null;
         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -46,7 +46,7 @@ public class AskarFile {
     }
 
     public void saveIntoAAskarFile(String name, String location, String version) {
-        String askarFilePath = "EasyMCU.askar";
+        String askarFilePath = "../src/EasyMCU.askar";
         List<String> lines = new ArrayList<>();
         String line = null;
         try {
