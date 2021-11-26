@@ -6,6 +6,7 @@
 package easymcu;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,16 +22,10 @@ public class EasyMCU extends javax.swing.JFrame {
     DynamicView DV = new DynamicView();
     Color panelMovingColor = new Color(41, 57, 80);
     Color labelMovingColor = new Color(255, 128, 0);
-
     public EasyMCU() {
         initComponents();
-        logoLabel.setIcon(new ImageIcon(("../src/Images/EasyMCU_Logo.png")));
-        newProjectIconLabel.setIcon(new ImageIcon(("../src//Images/new.png")));
-        calculatorIconLabel.setIcon(new ImageIcon(("../src/Images/calc.png")));
-        learnIconLabel.setIcon(new ImageIcon(("../src/Images/learn.png")));
-        openProjectIconLabel.setIcon(new ImageIcon (("../src/Images/open.png")));
-        aboutIconLabel.setIcon(new ImageIcon(("../src/Images/about.png")));
-        updateTable();
+        this.setIconImage(new ImageIcon(   getClass().getResource("/Icons/EasyMCU_Logo.png")).getImage());
+        recentProjectsLabel.setText(updateTable());
     }
 
     /**
@@ -141,6 +136,7 @@ public class EasyMCU extends javax.swing.JFrame {
         newProjectLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         newProjectIconLabel.setBackground(new java.awt.Color(35, 64, 102));
+        newProjectIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/new.png"))); // NOI18N
 
         javax.swing.GroupLayout newProjectPanelLayout = new javax.swing.GroupLayout(newProjectPanel);
         newProjectPanel.setLayout(newProjectPanelLayout);
@@ -199,6 +195,7 @@ public class EasyMCU extends javax.swing.JFrame {
         calculatorLabel.setText("MCU Calculator");
 
         calculatorIconLabel.setBackground(new java.awt.Color(35, 64, 102));
+        calculatorIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calc.png"))); // NOI18N
 
         javax.swing.GroupLayout CalculatorPanelLayout = new javax.swing.GroupLayout(CalculatorPanel);
         CalculatorPanel.setLayout(CalculatorPanelLayout);
@@ -215,7 +212,7 @@ public class EasyMCU extends javax.swing.JFrame {
         CalculatorPanelLayout.setVerticalGroup(
             CalculatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pointerCalculatorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(calculatorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(calculatorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(calculatorIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -256,6 +253,7 @@ public class EasyMCU extends javax.swing.JFrame {
         learnLabel.setText("Learn & Discover");
 
         learnIconLabel.setBackground(new java.awt.Color(35, 64, 102));
+        learnIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/learn.png"))); // NOI18N
 
         javax.swing.GroupLayout LearnPanelLayout = new javax.swing.GroupLayout(LearnPanel);
         LearnPanel.setLayout(LearnPanelLayout);
@@ -272,7 +270,7 @@ public class EasyMCU extends javax.swing.JFrame {
         LearnPanelLayout.setVerticalGroup(
             LearnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pointerLearnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(learnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(learnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(learnIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -288,6 +286,7 @@ public class EasyMCU extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("URW Bookman", 1, 36)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/EasyMCU_Logo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -339,6 +338,7 @@ public class EasyMCU extends javax.swing.JFrame {
         aboutLabel.setText("About & Feedback");
 
         aboutIconLabel.setBackground(new java.awt.Color(35, 64, 102));
+        aboutIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/about.png"))); // NOI18N
 
         javax.swing.GroupLayout AboutPanelLayout = new javax.swing.GroupLayout(AboutPanel);
         AboutPanel.setLayout(AboutPanelLayout);
@@ -355,7 +355,7 @@ public class EasyMCU extends javax.swing.JFrame {
         AboutPanelLayout.setVerticalGroup(
             AboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pointerAboutPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(aboutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(aboutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(aboutIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -486,6 +486,8 @@ public class EasyMCU extends javax.swing.JFrame {
         openProjectLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         openProjectLabel.setText("Open Project");
 
+        openProjectIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/open.png"))); // NOI18N
+
         javax.swing.GroupLayout openProjectPanelLayout = new javax.swing.GroupLayout(openProjectPanel);
         openProjectPanel.setLayout(openProjectPanelLayout);
         openProjectPanelLayout.setHorizontalGroup(
@@ -500,7 +502,7 @@ public class EasyMCU extends javax.swing.JFrame {
         openProjectPanelLayout.setVerticalGroup(
             openProjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pointerOpenProjectPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(openProjectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(openProjectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(openProjectIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -859,8 +861,8 @@ public class EasyMCU extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_formMouseDragged
 
-    public void updateTable() {
-        aFile.insertDataToTable(jTable1);
+    public String updateTable() {
+        return aFile.insertDataToTable(jTable1);
     }
 
     /**
