@@ -147,9 +147,9 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="applyStatus" max="32767" attributes="0"/>
+                          <Component id="DIOApplyStatus" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="ApplyPanel" min="-2" max="-2" attributes="0"/>
+                          <Component id="DIOApplyPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -239,8 +239,8 @@
                           </Group>
                           <EmptySpace pref="53" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="applyStatus" min="-2" pref="62" max="-2" attributes="0"/>
-                              <Component id="ApplyPanel" min="-2" max="-2" attributes="0"/>
+                              <Component id="DIOApplyStatus" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="DIOApplyPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -816,7 +816,7 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PD7_LabelMouseExited"/>
                   </Events>
                 </Component>
-                <Container class="javax.swing.JPanel" name="ApplyPanel">
+                <Container class="javax.swing.JPanel" name="DIOApplyPanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="40" red="23" type="rgb"/>
@@ -826,33 +826,33 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanelMouseMoved"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanelMouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanelMouseExited"/>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="DIOApplyPanelMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DIOApplyPanelMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DIOApplyPanelMouseExited"/>
                   </Events>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="pointerApplyPanel" min="-2" max="-2" attributes="0"/>
+                              <Component id="DIOPointerApplyPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ApplyIconLabel" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="DIOApplyIconLabel" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ApplyLabel" pref="132" max="32767" attributes="0"/>
+                              <Component id="DIOApplyLabel" pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pointerApplyPanel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ApplyLabel" alignment="0" pref="62" max="32767" attributes="0"/>
-                          <Component id="ApplyIconLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="DIOPointerApplyPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="DIOApplyLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                          <Component id="DIOApplyIconLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="pointerApplyPanel">
+                    <Container class="javax.swing.JPanel" name="DIOPointerApplyPanel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="80" red="ff" type="rgb"/>
@@ -876,7 +876,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="ApplyLabel">
+                    <Component class="javax.swing.JLabel" name="DIOApplyLabel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="40" red="23" type="rgb"/>
@@ -888,11 +888,11 @@
                         <Property name="text" type="java.lang.String" value="Apply On Driver"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="ApplyIconLabel">
+                    <Component class="javax.swing.JLabel" name="DIOApplyIconLabel">
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="applyStatus">
+                <Component class="javax.swing.JLabel" name="DIOApplyStatus">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="15" style="1"/>
@@ -924,37 +924,39 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ApplyPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="ADCApplyStatus" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ADCApplyPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel14" max="32767" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jComboBox5" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="prescallerLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="channelNumLabel" max="32767" attributes="0"/>
+                                      <Component id="adjustmentLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="autoTriggerLabel" alignment="0" pref="160" max="32767" attributes="0"/>
+                                      <Component id="VRLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="autoTriggerComboBox" alignment="0" pref="390" max="32767" attributes="0"/>
+                                              <Component id="prescallerComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="adjustmentComboBox" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="channelNumComboBox" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel12" max="32767" attributes="0"/>
-                                              <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel13" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jComboBox1" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="jComboBox2" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="jComboBox3" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="jComboBox4" min="-2" pref="300" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="VRComboBox" min="-2" pref="390" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="145" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -966,35 +968,43 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="exitLabel1" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="ADCApplyStatus" min="-2" pref="62" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="exitLabel1" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="VRLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="VRComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="adjustmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="adjustmentComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="autoTriggerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="autoTriggerComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="prescallerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="prescallerComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="channelNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="channelNumComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="431" max="32767" attributes="0"/>
+                                  <Component id="ADCApplyPanel" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="431" max="32767" attributes="0"/>
-                          <Component id="ApplyPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1018,15 +1028,15 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitLabel1MouseExited"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="VRLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Mode of operation"/>
+                    <Property name="text" type="java.lang.String" value="Voltage Refrence"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="adjustmentLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
@@ -1034,7 +1044,7 @@
                     <Property name="text" type="java.lang.String" value="Adjustment"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="autoTriggerLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
@@ -1042,7 +1052,7 @@
                     <Property name="text" type="java.lang.String" value="Autotrigger Source"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="prescallerLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
@@ -1050,7 +1060,7 @@
                     <Property name="text" type="java.lang.String" value="Prescaller"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel14">
+                <Component class="javax.swing.JLabel" name="channelNumLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
@@ -1058,7 +1068,7 @@
                     <Property name="text" type="java.lang.String" value="Channel Number"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="VRComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
@@ -1071,95 +1081,107 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="VRComboBoxMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox2">
+                <Component class="javax.swing.JComboBox" name="adjustmentComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
-                        <StringItem index="0" value="Right Adjustment"/>
-                        <StringItem index="1" value="Left Adjustment"/>
+                        <StringItem index="0" value="RIGHT_ADJUSTMENT"/>
+                        <StringItem index="1" value="LEFT_ADJUSTMENT"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="adjustmentComboBoxMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox3">
+                <Component class="javax.swing.JComboBox" name="autoTriggerComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="8">
-                        <StringItem index="0" value="Free Running Mode"/>
-                        <StringItem index="1" value="Analog Comparator"/>
-                        <StringItem index="2" value="External Interrupt Request 0"/>
-                        <StringItem index="3" value="Timer Counter 0 Compare Match"/>
-                        <StringItem index="4" value="Timer Counter 0 Overflow"/>
-                        <StringItem index="5" value="Timer Counter 0 Compare Match B"/>
-                        <StringItem index="6" value="Timer Counter 1 Overflow"/>
-                        <StringItem index="7" value="Timer Counter 1 Capture Event"/>
+                        <StringItem index="0" value="FREE_RUNNING_MODE"/>
+                        <StringItem index="1" value="ANALOG_COMPARATOR"/>
+                        <StringItem index="2" value="EXTERNAL_INTERRPUT_REQUEST_0"/>
+                        <StringItem index="3" value="TIMER_COUNTER_0_COMPARE_MATCH"/>
+                        <StringItem index="4" value="TIMER_COUNTER_0_OVERFLOW"/>
+                        <StringItem index="5" value="TIMER_COUNTER_COMPARE_MATCH_B"/>
+                        <StringItem index="6" value="TIMER_COUNTER_1_OVERFLOW"/>
+                        <StringItem index="7" value="TIMER_COUNTER_1_CAPTURE_EVENT"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="autoTriggerComboBoxMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox4">
+                <Component class="javax.swing.JComboBox" name="prescallerComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="7">
-                        <StringItem index="0" value="Divid By 2"/>
-                        <StringItem index="1" value="Divid By 4"/>
-                        <StringItem index="2" value="Divid By 8"/>
-                        <StringItem index="3" value="Divid By 16"/>
-                        <StringItem index="4" value="Divid By 32"/>
-                        <StringItem index="5" value="Divid By 64"/>
-                        <StringItem index="6" value="Divid By 128"/>
+                        <StringItem index="0" value="DIVID_BY_2"/>
+                        <StringItem index="1" value="DIVID_BY_4"/>
+                        <StringItem index="2" value="DIVID_BY_8"/>
+                        <StringItem index="3" value="DIVID_BY_16"/>
+                        <StringItem index="4" value="DIVID_BY_32"/>
+                        <StringItem index="5" value="DIVID_BY_64"/>
+                        <StringItem index="6" value="DIVID_BY_128"/>
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="prescallerComboBoxMouseClicked"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox5">
+                <Component class="javax.swing.JComboBox" name="channelNumComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="8">
-                        <StringItem index="0" value="Port A0"/>
-                        <StringItem index="1" value="Port A1"/>
-                        <StringItem index="2" value="Port A2"/>
-                        <StringItem index="3" value="Port A3"/>
-                        <StringItem index="4" value="Port A4"/>
-                        <StringItem index="5" value="Port A5"/>
-                        <StringItem index="6" value="Port A6"/>
-                        <StringItem index="7" value="Port A7"/>
+                        <StringItem index="0" value="DIO_U8_PIN_0"/>
+                        <StringItem index="1" value="DIO_U8_PIN_1"/>
+                        <StringItem index="2" value="DIO_U8_PIN_2"/>
+                        <StringItem index="3" value="DIO_U8_PIN_3"/>
+                        <StringItem index="4" value="DIO_U8_PIN_4"/>
+                        <StringItem index="5" value="DIO_U8_PIN_5"/>
+                        <StringItem index="6" value="DIO_U8_PIN_6"/>
+                        <StringItem index="7" value="DIO_U8_PIN_7"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="channelNumComboBoxMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Container class="javax.swing.JPanel" name="ApplyPanel1">
+                <Container class="javax.swing.JPanel" name="ADCApplyPanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="40" red="23" type="rgb"/>
@@ -1169,33 +1191,33 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanel1MouseMoved"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanel1MouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanel1MouseExited"/>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ADCApplyPanelMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ADCApplyPanelMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ADCApplyPanelMouseExited"/>
                   </Events>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="pointerApplyPanel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ADCPointerApplyPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ApplyIconLabel1" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="ADCApplyIconLabel" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ApplyLabel1" pref="132" max="32767" attributes="0"/>
+                              <Component id="ADCApplyLabel" pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pointerApplyPanel1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ApplyLabel1" alignment="0" pref="62" max="32767" attributes="0"/>
-                          <Component id="ApplyIconLabel1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ADCPointerApplyPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ADCApplyLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                          <Component id="ADCApplyIconLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="pointerApplyPanel1">
+                    <Container class="javax.swing.JPanel" name="ADCPointerApplyPanel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="80" red="ff" type="rgb"/>
@@ -1219,7 +1241,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="ApplyLabel1">
+                    <Component class="javax.swing.JLabel" name="ADCApplyLabel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="40" red="23" type="rgb"/>
@@ -1231,10 +1253,20 @@
                         <Property name="text" type="java.lang.String" value="Apply On Driver"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="ApplyIconLabel1">
+                    <Component class="javax.swing.JLabel" name="ADCApplyIconLabel">
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="ADCApplyStatus">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="15" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="d3" red="41" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="USARTContentPanel">
@@ -1258,35 +1290,51 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel37" max="32767" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jComboBox10" min="-2" pref="300" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel35" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel33" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel34" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel36" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox6" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="jComboBox7" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="jComboBox8" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="jComboBox9" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                      <Component id="clockPolarityLabel" max="32767" attributes="0"/>
+                                      <Component id="frameSizeLabel" max="32767" attributes="0"/>
+                                      <Component id="fCPULabel" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="stopBitSelectLabel" max="32767" attributes="0"/>
+                                              <Component id="speedOPLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="parityModeLabel" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="modeOPLabel" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="buadRateLabel" max="32767" attributes="0"/>
                                   </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
+                                          <Component id="exitLabel2" min="-2" pref="35" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="parityModeComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="stopBitSelectComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="clockPolarityComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="fCPUComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="frameSizeComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="buadRateComboBox" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="modeOPComboBoxl" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="speedOPComboBox" alignment="0" pref="390" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="USARTApplyStatus" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="USARTApplyPanel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="110" max="32767" attributes="0"/>
-                          <Component id="exitLabel2" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ApplyPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1301,31 +1349,49 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="modeOPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="modeOPComboBoxl" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="speedOPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="speedOPComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="parityModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="parityModeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stopBitSelectLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stopBitSelectComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="clockPolarityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="clockPolarityComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="431" max="32767" attributes="0"/>
-                                  <Component id="ApplyPanel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="fCPUComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fCPULabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="frameSizeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="frameSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="buadRateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="buadRateComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="293" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="USARTApplyPanel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="USARTApplyStatus" alignment="1" min="-2" pref="62" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1351,7 +1417,7 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitLabel2MouseExited"/>
                   </Events>
                 </Component>
-                <Container class="javax.swing.JPanel" name="ApplyPanel2">
+                <Container class="javax.swing.JPanel" name="USARTApplyPanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="40" red="23" type="rgb"/>
@@ -1361,33 +1427,33 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanel2MouseMoved"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanel2MouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ApplyPanel2MouseExited"/>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="USARTApplyPanelMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="USARTApplyPanelMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="USARTApplyPanelMouseExited"/>
                   </Events>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="pointerApplyPanel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="USARTPointerApplyPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ApplyIconLabel2" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="USARTApplyIconLabel" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ApplyLabel2" pref="132" max="32767" attributes="0"/>
+                              <Component id="USARTApplyLabel" pref="132" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pointerApplyPanel2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ApplyLabel2" alignment="0" pref="62" max="32767" attributes="0"/>
-                          <Component id="ApplyIconLabel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="USARTPointerApplyPanel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="USARTApplyLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                          <Component id="USARTApplyIconLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="pointerApplyPanel2">
+                    <Container class="javax.swing.JPanel" name="USARTPointerApplyPanel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="80" red="ff" type="rgb"/>
@@ -1411,7 +1477,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="ApplyLabel2">
+                    <Component class="javax.swing.JLabel" name="USARTApplyLabel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="40" red="23" type="rgb"/>
@@ -1423,150 +1489,245 @@
                         <Property name="text" type="java.lang.String" value="Apply On Driver"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="ApplyIconLabel2">
+                    <Component class="javax.swing.JLabel" name="USARTApplyIconLabel">
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel33">
+                <Component class="javax.swing.JLabel" name="modeOPLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Voltage Refrence"/>
+                    <Property name="text" type="java.lang.String" value="Mode Of Operation"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel34">
+                <Component class="javax.swing.JLabel" name="speedOPLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Adjustment"/>
+                    <Property name="text" type="java.lang.String" value="Speed Of Operation"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel35">
+                <Component class="javax.swing.JLabel" name="parityModeLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Autotrigger Source"/>
+                    <Property name="text" type="java.lang.String" value="Parity Mode"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel36">
+                <Component class="javax.swing.JLabel" name="stopBitSelectLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Prescaller"/>
+                    <Property name="text" type="java.lang.String" value="Stop Bit Select"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel37">
+                <Component class="javax.swing.JLabel" name="clockPolarityLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Channel Number"/>
+                    <Property name="text" type="java.lang.String" value="Clock Polarity"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox6">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="AVCC"/>
-                        <StringItem index="1" value="AREF"/>
-                        <StringItem index="2" value="INTERNAL"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox7">
+                <Component class="javax.swing.JComboBox" name="modeOPComboBoxl">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
-                        <StringItem index="0" value="Right Adjustment"/>
-                        <StringItem index="1" value="Left Adjustment"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox8">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="8">
-                        <StringItem index="0" value="Free Running Mode"/>
-                        <StringItem index="1" value="Analog Comparator"/>
-                        <StringItem index="2" value="External Interrupt Request 0"/>
-                        <StringItem index="3" value="Timer Counter 0 Compare Match"/>
-                        <StringItem index="4" value="Timer Counter 0 Overflow"/>
-                        <StringItem index="5" value="Timer Counter 0 Compare Match B"/>
-                        <StringItem index="6" value="Timer Counter 1 Overflow"/>
-                        <StringItem index="7" value="Timer Counter 1 Capture Event"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox9">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="7">
-                        <StringItem index="0" value="Divid By 2"/>
-                        <StringItem index="1" value="Divid By 4"/>
-                        <StringItem index="2" value="Divid By 8"/>
-                        <StringItem index="3" value="Divid By 16"/>
-                        <StringItem index="4" value="Divid By 32"/>
-                        <StringItem index="5" value="Divid By 64"/>
-                        <StringItem index="6" value="Divid By 128"/>
+                        <StringItem index="0" value="ASYNCHRONOUS"/>
+                        <StringItem index="1" value="SYNCHRONOUS"/>
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox9ActionPerformed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modeOPComboBoxlMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modeOPComboBoxlActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox10">
+                <Component class="javax.swing.JComboBox" name="speedOPComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="8">
-                        <StringItem index="0" value="Port A0"/>
-                        <StringItem index="1" value="Port A1"/>
-                        <StringItem index="2" value="Port A2"/>
-                        <StringItem index="3" value="Port A3"/>
-                        <StringItem index="4" value="Port A4"/>
-                        <StringItem index="5" value="Port A5"/>
-                        <StringItem index="6" value="Port A6"/>
-                        <StringItem index="7" value="Port A7"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="DOUBLE_SPEED_MODE"/>
+                        <StringItem index="1" value="NORMAL_SPEED_MODE"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="speedOPComboBoxMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="parityModeComboBox">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="DISABLED"/>
+                        <StringItem index="1" value="EVEN"/>
+                        <StringItem index="2" value="ODD"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="parityModeComboBoxMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="stopBitSelectComboBox">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="ONE_BIT"/>
+                        <StringItem index="1" value="TWO_BIT"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stopBitSelectComboBoxMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="clockPolarityComboBox">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="RISING"/>
+                        <StringItem index="1" value="FALLING"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="clockPolarityComboBoxMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="fCPULabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Frequency Of CPU"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="fCPUComboBox">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="4000000"/>
+                        <StringItem index="1" value="8000000"/>
+                        <StringItem index="2" value="16000000"/>
+                        <StringItem index="3" value="32000000"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fCPUComboBoxMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="frameSizeLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Frame Size"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="frameSizeComboBox">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="5">
+                        <StringItem index="0" value="5"/>
+                        <StringItem index="1" value="6"/>
+                        <StringItem index="2" value="7"/>
+                        <StringItem index="3" value="8"/>
+                        <StringItem index="4" value="9"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="frameSizeComboBoxMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="buadRateLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Buad Rate"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="buadRateComboBox">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="5">
+                        <StringItem index="0" value="2400"/>
+                        <StringItem index="1" value="4800"/>
+                        <StringItem index="2" value="9600"/>
+                        <StringItem index="3" value="14400"/>
+                        <StringItem index="4" value="19200"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buadRateComboBoxMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="USARTApplyStatus">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="15" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="d3" red="41" type="rgb"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
