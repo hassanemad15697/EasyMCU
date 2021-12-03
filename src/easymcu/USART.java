@@ -5,46 +5,7 @@
  */
 package easymcu;
 
-/**
- * Enum for MODE_OF_OPERATION Values
- */
-enum MODE_OF_OPERATION {
-    ASYNCHRONOUS,
-    SYNCHRONOUS
-}
-
-/**
- * Enum for SPEED_OPERATION Values
- */
-enum SPEED_OPERATION {
-    NORMAL_SPEED_MODE,
-    DOUBLE_SPEED_MODE
-}
-
-/**
- * Enum for PARITY_MODE Values
- */
-enum PARITY_MODE {
-    DISABLED,
-    EVEN,
-    ODD
-}
-
-/**
- * Enum for STOP_BIT_SELECT Values
- */
-enum STOP_BIT_SELECT {
-    ONE_BIT,
-    TWO_BIT
-}
-
-/**
- * Enum for CLOCK_POLARITY Values
- */
-enum CLOCK_POLARITY {
-    RISING,
-    FALLING
-}
+import javax.swing.JComboBox;
 
 /**
  * A class used to configure USART Driver by setting each element value
@@ -60,11 +21,13 @@ public class USART extends UpdateDriver {
     //DIO Attributes
     //Set each element to congif by defualt as the following values 
 
-    private String config[] = {MODE_OF_OPERATION.ASYNCHRONOUS.toString(), SPEED_OPERATION.DOUBLE_SPEED_MODE.toString(), PARITY_MODE.DISABLED.toString(), STOP_BIT_SELECT.ONE_BIT.toString(), CLOCK_POLARITY.RISING.toString(), "8000000L", "8", "9600L"};
+    private String config[] = {"ASYNCHRONOUS", "DOUBLE_SPEED_MODE", "DISABLED", "ONE_BIT", "RISING", "8000000L", "8", "9600L"};
     //Elements Names
 
     private String element[] = {"MODE_OF_OPERATION", "SPEED_OPERATION", "PARITY_MODE", "STOP_BIT_SELECT", "CLOCK_POLARITY", "F_CPU", "FRAME_SIZE", "BAUD_RATE"};
-     private String CurrentFile;
+    private String CurrentFile;
+    private Boolean isChanged = false;
+
     /**
      * Constructor Sets element value by determining pin number and its value
      *
@@ -80,16 +43,20 @@ public class USART extends UpdateDriver {
      * @param FRAME_SIZE An FRAME_SIZE enum object that will hold the new value.
      * @param BAUD_RATE An BAUD_RATE enum object that will hold the new value.
      */
-    public USART(MODE_OF_OPERATION modOp, SPEED_OPERATION spdOp, PARITY_MODE prtyOp, STOP_BIT_SELECT stpBtSlct, CLOCK_POLARITY clkPlrty, int F_CPU, int FRAME_SIZE, int BAUD_RATE,String  currentFile ) {
-        config[0] = modOp.toString();
-        config[1] = spdOp.toString();
-        config[2] = prtyOp.toString();
-        config[3] = stpBtSlct.toString();
-        config[4] = clkPlrty.toString();
-        config[5] = F_CPU + "L";
-        config[6] = FRAME_SIZE + "";
-        config[7] = BAUD_RATE + "L";
-        CurrentFile=currentFile;
+    public void setUSARTvalues(String modOp, String spdOp, String prtyOp, String stpBtSlct, String clkPlrty, String F_CPU, String FRAME_SIZE, String BAUD_RATE) {
+
+        config[0] = modOp;
+        config[1] = spdOp;
+        config[2] = prtyOp;
+        config[3] = stpBtSlct;
+        config[4] = clkPlrty;
+        config[5] = (F_CPU + "L").trim();
+        config[6] = (FRAME_SIZE + "").trim();
+        config[7] = (BAUD_RATE + "L").trim();
+    }
+
+    public void setCurrentFile(String currentFile) {
+        CurrentFile = currentFile;
     }
 
     /**
@@ -97,11 +64,31 @@ public class USART extends UpdateDriver {
      * and determining the specific parameter for USART driver
      *
      */
-    public void updateUSARTDriver() {
-        super.updateDriver("USART_config.h", element.length, element, config,CurrentFile);
+    public Boolean isChanged() {
+        return isChanged;
     }
-    public void getDriverElementsValues() {
-        config = getDriverInfo("USART_config.h", element.length, element,CurrentFile);
 
+    public void setChanged() {
+        isChanged = true;
+    }
+
+    public void setDriverElementsValues(JComboBox[] USARTvalues) {
+        for (int c = 0; c < 8; c++) {
+            USARTvalues[c].setSelectedItem(config[c]);
+            System.out.println(config[c]);
+
+        }
+
+    }
+
+    public void getDriverElementsValues() {
+        config = getDriverInfo("USART_config.h", element.length, element, CurrentFile);
+        config[5] = config[5].replace('L', ' ').trim();
+        config[7] = config[7].replace('L', ' ').trim();
+    }
+
+    public void updateUSARTDriver() {
+        super.updateDriver("USART_config.h", element.length, element, config, CurrentFile);
+        isChanged = false;
     }
 }

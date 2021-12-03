@@ -216,31 +216,40 @@ public class NewProject extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    AskarFile aFile = new AskarFile();
     private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseButtonActionPerformed
-        JFileChooser f = new JFileChooser();
+        JFileChooser f = new JFileChooser(aFile.getLastLocation());
         f.setFileSelectionMode(f.DIRECTORIES_ONLY);
         f.showDialog(this, "Select");
         projectLocationTextField.setText(f.getSelectedFile().toString());
     }//GEN-LAST:event_browseButtonActionPerformed
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        if (!projectNameTextField.getText().isEmpty() && !projectLocationTextField.getText().isEmpty() && projectVersionTextField.getText().matches("(?!\\.)(\\d+(\\.\\d+)+)(?![\\d\\.])$")) {
+        if (!projectNameTextField.getText().isEmpty() && !projectLocationTextField.getText().isEmpty() &&
+                projectVersionTextField.getText().matches("(?!\\.)(\\d+(\\.\\d+)+)(?![\\d\\.])$")) {
             errorLabel.setText("");
-            File file = new File(projectLocationTextField.getText() + "/" + projectNameTextField.getText());
-
+            File file = new File(projectLocationTextField.getText() + "\\" + projectNameTextField.getText());
+            System.out.println("file:"+file.toString());
             if (file.exists()) {
                 errorLabel.setText("There is a project with the same name!");
             } else {
                 try {
-                    AskarFile aFile = new AskarFile();
+                    
+                    
                     file.mkdir();
-                    String Location = (String) projectLocationTextField.getText() + "/" + projectNameTextField.getText(), Name = (String) projectNameTextField.getText();
+                    String Location = (String) projectLocationTextField.getText() + "\\" + projectNameTextField.getText()
+                            ,Name = (String) projectNameTextField.getText();
 
                     aFile.saveIntoAAskarFile(projectNameTextField.getText(), projectLocationTextField.getText(), projectVersionTextField.getText());
-                    File source = new File("../src/Default Drivers");
+                   
+                    File source = new File(System.getProperty("user.dir")+"\\src\\Default_Drivers");
+                    System.out.println("source:"+source.toString());
+
                     FileUtils.copyDirectory(source, file);
+                    aFile.saveLastLocation((String) projectLocationTextField.getText() );
                     CurrentProject project = new CurrentProject(Location,Name);
+                    
                     project.setVisible(true);
                     this.dispose();
                 } catch (IOException ex) {

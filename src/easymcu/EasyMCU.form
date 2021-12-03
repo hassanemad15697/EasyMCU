@@ -170,6 +170,9 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="40" red="23" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/new.png"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -205,7 +208,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pointerCalculatorPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="calculatorLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                  <Component id="calculatorLabel" alignment="0" max="32767" attributes="0"/>
                   <Component id="calculatorIconLabel" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -249,6 +252,9 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="40" red="23" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/calc.png"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -284,7 +290,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pointerLearnPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="learnLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                  <Component id="learnLabel" alignment="0" max="32767" attributes="0"/>
                   <Component id="learnIconLabel" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -331,6 +337,9 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="40" red="23" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/learn.png"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -376,6 +385,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/EasyMCU_Logo.png"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -411,7 +423,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pointerAboutPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="aboutLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                  <Component id="aboutLabel" alignment="0" max="32767" attributes="0"/>
                   <Component id="aboutIconLabel" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -457,6 +469,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="40" red="23" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/about.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -649,7 +664,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pointerOpenProjectPanel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="openProjectLabel" alignment="0" pref="62" max="32767" attributes="0"/>
+                      <Component id="openProjectLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="openProjectIconLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
@@ -692,6 +707,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="openProjectIconLabel">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Icons/open.png"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -736,7 +756,7 @@
                       <Component id="exitLabel1" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="easyMCULabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -811,7 +831,7 @@
                       <Component id="exitLabel2" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="easyMCULabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -886,7 +906,7 @@
                       <Component id="exitLabel3" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="easyMCULabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

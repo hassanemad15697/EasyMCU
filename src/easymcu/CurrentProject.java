@@ -8,12 +8,13 @@ package easymcu;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author askar
  */
-public class CurrentProject extends javax.swing.JFrame {
+public final class CurrentProject extends javax.swing.JFrame {
 
     private static String currentFile;
 
@@ -24,18 +25,30 @@ public class CurrentProject extends javax.swing.JFrame {
     Color panelMovingColor = new Color(41, 57, 80);
     Color labelMovingColor = new Color(255, 128, 0);
 
+    private final String[] spdOp1 = {"NORMAL_SPEED_MODE"};
+    private final String[] spdOp2 = {"NORMAL_SPEED_MODE", "DOUBLE_SPEED_MODE"};
+    private final String[] clkPlrty1 = {"RISING", "FALLING"};
+    private final String[] clkPlrty2 = {""};
+
     DIO Dio = new DIO();
+    ADC Adc = new ADC();
+    USART Usart = new USART();
 
     /**
      * Creates new form CurrentProject
+     *
+     * @param Location
+     * @param Name
      */
     public CurrentProject(String Location, String Name) {
         initComponents();
-         AVRIcon.setIcon(new ImageIcon(("../src/Images/ATmega32_DIO.png")));
         this.setTitle(Name);
         currentFile = Location;
         projectNameLabel.setText(Name);
         getPinsDirection();
+        getADCvalues();
+        getUSARTvalues();
+
     }
 
     private CurrentProject() {
@@ -88,73 +101,51 @@ public class CurrentProject extends javax.swing.JFrame {
         PD5_Label = new javax.swing.JLabel();
         PD6_Label = new javax.swing.JLabel();
         PD7_Label = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        ApplyPanel = new javax.swing.JPanel();
-        pointerApplyPanel = new javax.swing.JPanel();
-        ApplyLabel = new javax.swing.JLabel();
-        ApplyIconLabel = new javax.swing.JLabel();
-        applyStatus = new javax.swing.JLabel();
+        DIOApplyPanel = new javax.swing.JPanel();
+        DIOPointerApplyPanel = new javax.swing.JPanel();
+        DIOApplyLabel = new javax.swing.JLabel();
+        DIOApplyIconLabel = new javax.swing.JLabel();
+        DIOApplyStatus = new javax.swing.JLabel();
         ADCContentPanel = new javax.swing.JPanel();
         exitLabel1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        ApplyPanel1 = new javax.swing.JPanel();
-        pointerApplyPanel1 = new javax.swing.JPanel();
-        ApplyLabel1 = new javax.swing.JLabel();
-        ApplyIconLabel1 = new javax.swing.JLabel();
+        VRLabel = new javax.swing.JLabel();
+        adjustmentLabel = new javax.swing.JLabel();
+        autoTriggerLabel = new javax.swing.JLabel();
+        prescallerLabel = new javax.swing.JLabel();
+        channelNumLabel = new javax.swing.JLabel();
+        VRComboBox = new javax.swing.JComboBox<>();
+        adjustmentComboBox = new javax.swing.JComboBox<>();
+        autoTriggerComboBox = new javax.swing.JComboBox<>();
+        prescallerComboBox = new javax.swing.JComboBox<>();
+        channelNumComboBox = new javax.swing.JComboBox<>();
+        ADCApplyPanel = new javax.swing.JPanel();
+        ADCPointerApplyPanel = new javax.swing.JPanel();
+        ADCApplyLabel = new javax.swing.JLabel();
+        ADCApplyIconLabel = new javax.swing.JLabel();
+        ADCApplyStatus = new javax.swing.JLabel();
         USARTContentPanel = new javax.swing.JPanel();
         exitLabel2 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        ApplyPanel2 = new javax.swing.JPanel();
-        pointerApplyPanel2 = new javax.swing.JPanel();
-        ApplyLabel2 = new javax.swing.JLabel();
-        ApplyIconLabel2 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        jComboBox10 = new javax.swing.JComboBox<>();
+        USARTApplyPanel = new javax.swing.JPanel();
+        USARTPointerApplyPanel = new javax.swing.JPanel();
+        USARTApplyLabel = new javax.swing.JLabel();
+        USARTApplyIconLabel = new javax.swing.JLabel();
+        modeOPLabel = new javax.swing.JLabel();
+        speedOPLabel = new javax.swing.JLabel();
+        parityModeLabel = new javax.swing.JLabel();
+        stopBitSelectLabel = new javax.swing.JLabel();
+        clockPolarityLabel = new javax.swing.JLabel();
+        modeOPComboBoxl = new javax.swing.JComboBox<>();
+        speedOPComboBox = new javax.swing.JComboBox<>();
+        parityModeComboBox = new javax.swing.JComboBox<>();
+        stopBitSelectComboBox = new javax.swing.JComboBox<>();
+        clockPolarityComboBox = new javax.swing.JComboBox<>();
+        fCPULabel = new javax.swing.JLabel();
+        fCPUComboBox = new javax.swing.JComboBox<>();
+        frameSizeLabel = new javax.swing.JLabel();
+        frameSizeComboBox = new javax.swing.JComboBox<>();
+        buadRateLabel = new javax.swing.JLabel();
+        buadRateComboBox = new javax.swing.JComboBox<>();
+        USARTApplyStatus = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         projectNamePanel = new javax.swing.JPanel();
         projectNameLabel = new javax.swing.JLabel();
@@ -215,6 +206,8 @@ public class CurrentProject extends javax.swing.JFrame {
                 exitLabelMouseExited(evt);
             }
         });
+
+        AVRIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/ATmega32_DIO.png"))); // NOI18N
 
         PA0_Label.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         PA0_Label.setForeground(new java.awt.Color(254, 254, 254));
@@ -792,115 +785,68 @@ public class CurrentProject extends javax.swing.JFrame {
             }
         });
 
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Instructions");
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("To Toggle The Pin  Direction (Output or Input), Click On the pin.");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("If Pin Color is WHITE , The Pin Direction is INPUT");
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("If Pin Color is BLACK , The Pin Direction is OUTPUT");
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("PAx means Port Ax. EX. PA0 means Port A0 pin.");
-
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("PBx means Port Ax. EX. PB3 means Port B3 pin.");
-
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("PCx means Port Cx. EX. PC1 means Port C1 pin.");
-
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("PDx means Port Dx. EX. PD7 means Port D7 pin.");
-
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("To apply the changes on DIO Driver Click \"Apply On Driver\" Button.");
-
-        ApplyPanel.setBackground(new java.awt.Color(35, 64, 102));
-        ApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
-        ApplyPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        DIOApplyPanel.setBackground(new java.awt.Color(35, 64, 102));
+        DIOApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
+        DIOApplyPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                ApplyPanelMouseMoved(evt);
+                DIOApplyPanelMouseMoved(evt);
             }
         });
-        ApplyPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        DIOApplyPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ApplyPanelMouseClicked(evt);
+                DIOApplyPanelMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ApplyPanelMouseExited(evt);
+                DIOApplyPanelMouseExited(evt);
             }
         });
 
-        pointerApplyPanel.setBackground(new java.awt.Color(255, 128, 0));
-        pointerApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
-        pointerApplyPanel.setOpaque(false);
+        DIOPointerApplyPanel.setBackground(new java.awt.Color(255, 128, 0));
+        DIOPointerApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
+        DIOPointerApplyPanel.setOpaque(false);
 
-        javax.swing.GroupLayout pointerApplyPanelLayout = new javax.swing.GroupLayout(pointerApplyPanel);
-        pointerApplyPanel.setLayout(pointerApplyPanelLayout);
-        pointerApplyPanelLayout.setHorizontalGroup(
-            pointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout DIOPointerApplyPanelLayout = new javax.swing.GroupLayout(DIOPointerApplyPanel);
+        DIOPointerApplyPanel.setLayout(DIOPointerApplyPanelLayout);
+        DIOPointerApplyPanelLayout.setHorizontalGroup(
+            DIOPointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
-        pointerApplyPanelLayout.setVerticalGroup(
-            pointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        DIOPointerApplyPanelLayout.setVerticalGroup(
+            DIOPointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        ApplyLabel.setBackground(new java.awt.Color(35, 64, 102));
-        ApplyLabel.setForeground(new java.awt.Color(255, 255, 255));
-        ApplyLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ApplyLabel.setText("Apply On Driver");
+        DIOApplyLabel.setBackground(new java.awt.Color(35, 64, 102));
+        DIOApplyLabel.setForeground(new java.awt.Color(255, 255, 255));
+        DIOApplyLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        DIOApplyLabel.setText("Apply On Driver");
 
-        javax.swing.GroupLayout ApplyPanelLayout = new javax.swing.GroupLayout(ApplyPanel);
-        ApplyPanel.setLayout(ApplyPanelLayout);
-        ApplyPanelLayout.setHorizontalGroup(
-            ApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ApplyPanelLayout.createSequentialGroup()
-                .addComponent(pointerApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout DIOApplyPanelLayout = new javax.swing.GroupLayout(DIOApplyPanel);
+        DIOApplyPanel.setLayout(DIOApplyPanelLayout);
+        DIOApplyPanelLayout.setHorizontalGroup(
+            DIOApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DIOApplyPanelLayout.createSequentialGroup()
+                .addComponent(DIOPointerApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApplyIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DIOApplyIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                .addComponent(DIOApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
         );
-        ApplyPanelLayout.setVerticalGroup(
-            ApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pointerApplyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-            .addComponent(ApplyIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        DIOApplyPanelLayout.setVerticalGroup(
+            DIOApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(DIOPointerApplyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(DIOApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(DIOApplyIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        applyStatus.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        applyStatus.setForeground(new java.awt.Color(65, 211, 92));
+        DIOApplyStatus.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        DIOApplyStatus.setForeground(new java.awt.Color(65, 211, 92));
 
         javax.swing.GroupLayout DIOContentPanelLayout = new javax.swing.GroupLayout(DIOContentPanel);
         DIOContentPanel.setLayout(DIOContentPanelLayout);
         DIOContentPanelLayout.setHorizontalGroup(
             DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(DIOContentPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DIOContentPanelLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PB0_Label)
@@ -921,155 +867,114 @@ public class CurrentProject extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(AVRIcon)
                 .addGap(18, 18, 18)
-                .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PD7_Label)
-                    .addComponent(PC0_Label)
-                    .addComponent(PC1_Label)
-                    .addComponent(PC2_Label)
-                    .addComponent(PC3_Label)
-                    .addComponent(PC4_Label)
-                    .addComponent(PC5_Label)
-                    .addComponent(PC6_Label)
-                    .addComponent(PC7_Label)
-                    .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(PA0_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA1_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA2_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA3_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA5_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA6_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA7_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PA4_Label, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DIOContentPanelLayout.createSequentialGroup()
-                                .addComponent(applyStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(PC0_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC1_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA0_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA1_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA2_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA3_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA5_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA6_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA7_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PA4_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC7_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC6_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC5_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC4_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC3_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PC2_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PD7_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(DIOContentPanelLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(DIOApplyStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(DIOApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         DIOContentPanelLayout.setVerticalGroup(
             DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(PB0_Label)
-                        .addGap(12, 12, 12)
-                        .addComponent(PB1_Label)
+                        .addGap(57, 57, 57)
+                        .addComponent(PA0_Label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PB2_Label)
+                        .addComponent(PA1_Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PA2_Label)
                         .addGap(18, 18, 18)
-                        .addComponent(PB3_Label)
+                        .addComponent(PA3_Label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PB4_Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PB5_Label)
+                        .addComponent(PA4_Label)
                         .addGap(18, 18, 18)
-                        .addComponent(PB6_Label)
+                        .addComponent(PA5_Label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PB7_Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PD0_Label)
+                        .addComponent(PA6_Label)
                         .addGap(18, 18, 18)
-                        .addComponent(PD1_Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PD2_Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PD3_Label)
-                        .addGap(16, 16, 16)
-                        .addComponent(PD4_Label)
+                        .addComponent(PA7_Label)
+                        .addGap(113, 113, 113)
+                        .addComponent(PC7_Label)
                         .addGap(18, 18, 18)
-                        .addComponent(PD5_Label)
+                        .addComponent(PC6_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(PC5_Label)
+                        .addGap(18, 18, 18)
+                        .addComponent(PC4_Label)
+                        .addGap(18, 18, 18)
+                        .addComponent(PC3_Label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PD6_Label)
-                        .addGap(66, 66, 66))
-                    .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AVRIcon)
-                        .addContainerGap(50, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DIOContentPanelLayout.createSequentialGroup()
-                        .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(PC2_Label)
+                        .addGap(18, 18, 18)
+                        .addComponent(PC1_Label)
+                        .addGap(18, 18, 18)
+                        .addComponent(PC0_Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PD7_Label))
+                    .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(DIOContentPanelLayout.createSequentialGroup()
+                            .addGap(56, 56, 56)
+                            .addComponent(PB0_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PB1_Label)
+                            .addGap(18, 18, 18)
+                            .addComponent(PB2_Label)
+                            .addGap(18, 18, 18)
+                            .addComponent(PB3_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PB4_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PB5_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PB6_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PB7_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PD0_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PD1_Label)
+                            .addGap(18, 18, 18)
+                            .addComponent(PD2_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PD3_Label)
+                            .addGap(18, 18, 18)
+                            .addComponent(PD4_Label)
+                            .addGap(18, 18, 18)
+                            .addComponent(PD5_Label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(PD6_Label)
+                            .addGap(22, 22, 22))
+                        .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(PA0_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PA1_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PA2_Label)
-                                .addGap(18, 18, 18)
-                                .addComponent(PA3_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PA4_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PA5_Label)
-                                .addGap(18, 18, 18)
-                                .addComponent(PA6_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PA7_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(PC7_Label)
-                                .addGap(18, 18, 18)
-                                .addComponent(PC6_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PC5_Label)
-                                .addGap(18, 18, 18)
-                                .addComponent(PC4_Label)
-                                .addGap(12, 12, 12)
-                                .addComponent(PC3_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PC2_Label)
-                                .addGap(18, 18, 18)
-                                .addComponent(PC1_Label)
-                                .addGap(18, 18, 18)
-                                .addComponent(PC0_Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PD7_Label)
-                                .addGap(53, 53, 53))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DIOContentPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(applyStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())))
-            .addGroup(DIOContentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2)
+                                .addGap(25, 25, 25)
+                                .addComponent(AVRIcon))
+                            .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(DIOContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DIOApplyStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DIOApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1097,236 +1002,185 @@ public class CurrentProject extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("Mode of operation");
+        VRLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        VRLabel.setText("Voltage Refrence");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setText("Adjustment");
+        adjustmentLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        adjustmentLabel.setText("Adjustment");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel12.setText("Autotrigger Source");
+        autoTriggerLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        autoTriggerLabel.setText("Autotrigger Source");
 
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel13.setText("Prescaller");
+        prescallerLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        prescallerLabel.setText("Prescaller");
 
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel14.setText("Channel Number");
+        channelNumLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        channelNumLabel.setText("Channel Number");
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AVCC", "AREF", "INTERNAL" }));
-
-        jComboBox2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Right Adjustment", "Left Adjustment" }));
-
-        jComboBox3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Free Running Mode", "Analog Comparator", "External Interrupt Request 0", "Timer Counter 0 Compare Match", "Timer Counter 0 Overflow", "Timer Counter 0 Compare Match B", "Timer Counter 1 Overflow", "Timer Counter 1 Capture Event" }));
-
-        jComboBox4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Divid By 2", "Divid By 4", "Divid By 8", "Divid By 16", "Divid By 32", "Divid By 64", "Divid By 128" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
-            }
-        });
-
-        jComboBox5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Port A0", "Port A1", "Port A2", "Port A3", "Port A4", "Port A5", "Port A6", "Port A7" }));
-
-        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Instructions");
-
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("To Toggle The Pin  Direction (Output or Input), Click On the pin.");
-
-        jLabel17.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("If Pin Color is WHITE , The Pin Direction is INPUT");
-
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("If Pin Color is BLACK , The Pin Direction is OUTPUT");
-
-        jLabel19.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("PAx means Port Ax. EX. PA0 means Port A0 pin.");
-
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("PBx means Port Ax. EX. PB3 means Port B3 pin.");
-
-        jLabel21.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("PCx means Port Cx. EX. PC1 means Port C1 pin.");
-
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("PDx means Port Dx. EX. PD7 means Port D7 pin.");
-
-        jLabel23.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("To apply the changes on DIO Driver Click \"Apply On Driver\" Button.");
-
-        ApplyPanel1.setBackground(new java.awt.Color(35, 64, 102));
-        ApplyPanel1.setForeground(new java.awt.Color(35, 64, 102));
-        ApplyPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                ApplyPanel1MouseMoved(evt);
-            }
-        });
-        ApplyPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        VRComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        VRComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AVCC", "AREF", "INTERNAL" }));
+        VRComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ApplyPanel1MouseClicked(evt);
+                VRComboBoxMouseClicked(evt);
+            }
+        });
+
+        adjustmentComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        adjustmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RIGHT_ADJUSTMENT", "LEFT_ADJUSTMENT" }));
+        adjustmentComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adjustmentComboBoxMouseClicked(evt);
+            }
+        });
+
+        autoTriggerComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        autoTriggerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FREE_RUNNING_MODE", "ANALOG_COMPARATOR", "EXTERNAL_INTERRPUT_REQUEST_0", "TIMER_COUNTER_0_COMPARE_MATCH", "TIMER_COUNTER_0_OVERFLOW", "TIMER_COUNTER_COMPARE_MATCH_B", "TIMER_COUNTER_1_OVERFLOW", "TIMER_COUNTER_1_CAPTURE_EVENT" }));
+        autoTriggerComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                autoTriggerComboBoxMouseClicked(evt);
+            }
+        });
+
+        prescallerComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        prescallerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIVID_BY_2", "DIVID_BY_4", "DIVID_BY_8", "DIVID_BY_16", "DIVID_BY_32", "DIVID_BY_64", "DIVID_BY_128" }));
+        prescallerComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prescallerComboBoxMouseClicked(evt);
+            }
+        });
+
+        channelNumComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        channelNumComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIO_U8_PIN_0", "DIO_U8_PIN_1", "DIO_U8_PIN_2", "DIO_U8_PIN_3", "DIO_U8_PIN_4", "DIO_U8_PIN_5", "DIO_U8_PIN_6", "DIO_U8_PIN_7" }));
+        channelNumComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                channelNumComboBoxMouseClicked(evt);
+            }
+        });
+
+        ADCApplyPanel.setBackground(new java.awt.Color(35, 64, 102));
+        ADCApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
+        ADCApplyPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ADCApplyPanelMouseMoved(evt);
+            }
+        });
+        ADCApplyPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ADCApplyPanelMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ApplyPanel1MouseExited(evt);
+                ADCApplyPanelMouseExited(evt);
             }
         });
 
-        pointerApplyPanel1.setBackground(new java.awt.Color(255, 128, 0));
-        pointerApplyPanel1.setForeground(new java.awt.Color(35, 64, 102));
-        pointerApplyPanel1.setOpaque(false);
+        ADCPointerApplyPanel.setBackground(new java.awt.Color(255, 128, 0));
+        ADCPointerApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
+        ADCPointerApplyPanel.setOpaque(false);
 
-        javax.swing.GroupLayout pointerApplyPanel1Layout = new javax.swing.GroupLayout(pointerApplyPanel1);
-        pointerApplyPanel1.setLayout(pointerApplyPanel1Layout);
-        pointerApplyPanel1Layout.setHorizontalGroup(
-            pointerApplyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ADCPointerApplyPanelLayout = new javax.swing.GroupLayout(ADCPointerApplyPanel);
+        ADCPointerApplyPanel.setLayout(ADCPointerApplyPanelLayout);
+        ADCPointerApplyPanelLayout.setHorizontalGroup(
+            ADCPointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
-        pointerApplyPanel1Layout.setVerticalGroup(
-            pointerApplyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ADCPointerApplyPanelLayout.setVerticalGroup(
+            ADCPointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        ApplyLabel1.setBackground(new java.awt.Color(35, 64, 102));
-        ApplyLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        ApplyLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ApplyLabel1.setText("Apply On Driver");
+        ADCApplyLabel.setBackground(new java.awt.Color(35, 64, 102));
+        ADCApplyLabel.setForeground(new java.awt.Color(255, 255, 255));
+        ADCApplyLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ADCApplyLabel.setText("Apply On Driver");
 
-        javax.swing.GroupLayout ApplyPanel1Layout = new javax.swing.GroupLayout(ApplyPanel1);
-        ApplyPanel1.setLayout(ApplyPanel1Layout);
-        ApplyPanel1Layout.setHorizontalGroup(
-            ApplyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ApplyPanel1Layout.createSequentialGroup()
-                .addComponent(pointerApplyPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout ADCApplyPanelLayout = new javax.swing.GroupLayout(ADCApplyPanel);
+        ADCApplyPanel.setLayout(ADCApplyPanelLayout);
+        ADCApplyPanelLayout.setHorizontalGroup(
+            ADCApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ADCApplyPanelLayout.createSequentialGroup()
+                .addComponent(ADCPointerApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApplyIconLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ADCApplyIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApplyLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                .addComponent(ADCApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
         );
-        ApplyPanel1Layout.setVerticalGroup(
-            ApplyPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pointerApplyPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ApplyLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-            .addComponent(ApplyIconLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        ADCApplyPanelLayout.setVerticalGroup(
+            ADCApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ADCPointerApplyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ADCApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(ADCApplyIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        ADCApplyStatus.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        ADCApplyStatus.setForeground(new java.awt.Color(65, 211, 92));
 
         javax.swing.GroupLayout ADCContentPanelLayout = new javax.swing.GroupLayout(ADCContentPanel);
         ADCContentPanel.setLayout(ADCContentPanelLayout);
         ADCContentPanelLayout.setHorizontalGroup(
             ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ADCContentPanelLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(ADCApplyStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(ADCApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(ADCContentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(ADCContentPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ADCContentPanelLayout.createSequentialGroup()
-                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
                 .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ADCContentPanelLayout.createSequentialGroup()
+                    .addGroup(ADCContentPanelLayout.createSequentialGroup()
                         .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ApplyPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                            .addComponent(prescallerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(channelNumLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(adjustmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(autoTriggerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(VRLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ADCContentPanelLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(autoTriggerComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 390, Short.MAX_VALUE)
+                                    .addComponent(prescallerComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(adjustmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(channelNumComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(ADCContentPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(VRComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ADCContentPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         ADCContentPanelLayout.setVerticalGroup(
             ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ADCContentPanelLayout.createSequentialGroup()
-                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ADCContentPanelLayout.createSequentialGroup()
+                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ADCContentPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ADCApplyStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ADCContentPanelLayout.createSequentialGroup()
                         .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ADCContentPanelLayout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(ADCContentPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel15)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel23)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
-                        .addComponent(ApplyPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ADCContentPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator4)))
+                        .addGap(50, 50, 50)
+                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(VRLabel)
+                            .addComponent(VRComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(adjustmentLabel)
+                            .addComponent(adjustmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(autoTriggerLabel)
+                            .addComponent(autoTriggerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(prescallerLabel)
+                            .addComponent(prescallerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ADCContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(channelNumLabel)
+                            .addComponent(channelNumComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 431, Short.MAX_VALUE)
+                        .addComponent(ADCApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -1354,141 +1208,155 @@ public class CurrentProject extends javax.swing.JFrame {
             }
         });
 
-        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel24.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Instructions");
-
-        jLabel25.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("To Toggle The Pin  Direction (Output or Input), Click On the pin.");
-
-        jLabel26.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("If Pin Color is WHITE , The Pin Direction is INPUT");
-
-        jLabel27.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("If Pin Color is BLACK , The Pin Direction is OUTPUT");
-
-        jLabel28.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("PAx means Port Ax. EX. PA0 means Port A0 pin.");
-
-        jLabel29.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("PBx means Port Ax. EX. PB3 means Port B3 pin.");
-
-        jLabel30.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("PCx means Port Cx. EX. PC1 means Port C1 pin.");
-
-        jLabel31.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("PDx means Port Dx. EX. PD7 means Port D7 pin.");
-
-        jLabel32.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(238, 192, 81));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("To apply the changes on DIO Driver Click \"Apply On Driver\" Button.");
-
-        ApplyPanel2.setBackground(new java.awt.Color(35, 64, 102));
-        ApplyPanel2.setForeground(new java.awt.Color(35, 64, 102));
-        ApplyPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        USARTApplyPanel.setBackground(new java.awt.Color(35, 64, 102));
+        USARTApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
+        USARTApplyPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                ApplyPanel2MouseMoved(evt);
+                USARTApplyPanelMouseMoved(evt);
             }
         });
-        ApplyPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        USARTApplyPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ApplyPanel2MouseClicked(evt);
+                USARTApplyPanelMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ApplyPanel2MouseExited(evt);
+                USARTApplyPanelMouseExited(evt);
             }
         });
 
-        pointerApplyPanel2.setBackground(new java.awt.Color(255, 128, 0));
-        pointerApplyPanel2.setForeground(new java.awt.Color(35, 64, 102));
-        pointerApplyPanel2.setOpaque(false);
+        USARTPointerApplyPanel.setBackground(new java.awt.Color(255, 128, 0));
+        USARTPointerApplyPanel.setForeground(new java.awt.Color(35, 64, 102));
+        USARTPointerApplyPanel.setOpaque(false);
 
-        javax.swing.GroupLayout pointerApplyPanel2Layout = new javax.swing.GroupLayout(pointerApplyPanel2);
-        pointerApplyPanel2.setLayout(pointerApplyPanel2Layout);
-        pointerApplyPanel2Layout.setHorizontalGroup(
-            pointerApplyPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout USARTPointerApplyPanelLayout = new javax.swing.GroupLayout(USARTPointerApplyPanel);
+        USARTPointerApplyPanel.setLayout(USARTPointerApplyPanelLayout);
+        USARTPointerApplyPanelLayout.setHorizontalGroup(
+            USARTPointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
-        pointerApplyPanel2Layout.setVerticalGroup(
-            pointerApplyPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        USARTPointerApplyPanelLayout.setVerticalGroup(
+            USARTPointerApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        ApplyLabel2.setBackground(new java.awt.Color(35, 64, 102));
-        ApplyLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        ApplyLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ApplyLabel2.setText("Apply On Driver");
+        USARTApplyLabel.setBackground(new java.awt.Color(35, 64, 102));
+        USARTApplyLabel.setForeground(new java.awt.Color(255, 255, 255));
+        USARTApplyLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        USARTApplyLabel.setText("Apply On Driver");
 
-        javax.swing.GroupLayout ApplyPanel2Layout = new javax.swing.GroupLayout(ApplyPanel2);
-        ApplyPanel2.setLayout(ApplyPanel2Layout);
-        ApplyPanel2Layout.setHorizontalGroup(
-            ApplyPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ApplyPanel2Layout.createSequentialGroup()
-                .addComponent(pointerApplyPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout USARTApplyPanelLayout = new javax.swing.GroupLayout(USARTApplyPanel);
+        USARTApplyPanel.setLayout(USARTApplyPanelLayout);
+        USARTApplyPanelLayout.setHorizontalGroup(
+            USARTApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(USARTApplyPanelLayout.createSequentialGroup()
+                .addComponent(USARTPointerApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApplyIconLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(USARTApplyIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApplyLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                .addComponent(USARTApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
         );
-        ApplyPanel2Layout.setVerticalGroup(
-            ApplyPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pointerApplyPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ApplyLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-            .addComponent(ApplyIconLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        USARTApplyPanelLayout.setVerticalGroup(
+            USARTApplyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(USARTPointerApplyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(USARTApplyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+            .addComponent(USARTApplyIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel33.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel33.setText("Voltage Refrence");
+        modeOPLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        modeOPLabel.setText("Mode Of Operation");
 
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel34.setText("Adjustment");
+        speedOPLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        speedOPLabel.setText("Speed Of Operation");
 
-        jLabel35.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel35.setText("Autotrigger Source");
+        parityModeLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        parityModeLabel.setText("Parity Mode");
 
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel36.setText("Prescaller");
+        stopBitSelectLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        stopBitSelectLabel.setText("Stop Bit Select");
 
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel37.setText("Channel Number");
+        clockPolarityLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        clockPolarityLabel.setText("Clock Polarity");
 
-        jComboBox6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AVCC", "AREF", "INTERNAL" }));
-
-        jComboBox7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Right Adjustment", "Left Adjustment" }));
-
-        jComboBox8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Free Running Mode", "Analog Comparator", "External Interrupt Request 0", "Timer Counter 0 Compare Match", "Timer Counter 0 Overflow", "Timer Counter 0 Compare Match B", "Timer Counter 1 Overflow", "Timer Counter 1 Capture Event" }));
-
-        jComboBox9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Divid By 2", "Divid By 4", "Divid By 8", "Divid By 16", "Divid By 32", "Divid By 64", "Divid By 128" }));
-        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+        modeOPComboBoxl.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        modeOPComboBoxl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ASYNCHRONOUS", "SYNCHRONOUS" }));
+        modeOPComboBoxl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modeOPComboBoxlMouseClicked(evt);
+            }
+        });
+        modeOPComboBoxl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox9ActionPerformed(evt);
+                modeOPComboBoxlActionPerformed(evt);
             }
         });
 
-        jComboBox10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Port A0", "Port A1", "Port A2", "Port A3", "Port A4", "Port A5", "Port A6", "Port A7" }));
+        speedOPComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        speedOPComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DOUBLE_SPEED_MODE", "NORMAL_SPEED_MODE" }));
+        speedOPComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                speedOPComboBoxMouseClicked(evt);
+            }
+        });
+
+        parityModeComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        parityModeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISABLED", "EVEN", "ODD" }));
+        parityModeComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                parityModeComboBoxMouseClicked(evt);
+            }
+        });
+
+        stopBitSelectComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        stopBitSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ONE_BIT", "TWO_BIT" }));
+        stopBitSelectComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stopBitSelectComboBoxMouseClicked(evt);
+            }
+        });
+
+        clockPolarityComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        clockPolarityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RISING", "FALLING" }));
+        clockPolarityComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clockPolarityComboBoxMouseClicked(evt);
+            }
+        });
+
+        fCPULabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        fCPULabel.setText("Frequency Of CPU");
+
+        fCPUComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        fCPUComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4000000", "8000000", "16000000", "32000000" }));
+        fCPUComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fCPUComboBoxMouseClicked(evt);
+            }
+        });
+
+        frameSizeLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        frameSizeLabel.setText("Frame Size");
+
+        frameSizeComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        frameSizeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "6", "7", "8", "9" }));
+        frameSizeComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                frameSizeComboBoxMouseClicked(evt);
+            }
+        });
+
+        buadRateLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        buadRateLabel.setText("Buad Rate");
+
+        buadRateComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        buadRateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2400", "4800", "9600", "14400", "19200" }));
+        buadRateComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buadRateComboBoxMouseClicked(evt);
+            }
+        });
+
+        USARTApplyStatus.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        USARTApplyStatus.setForeground(new java.awt.Color(65, 211, 92));
 
         javax.swing.GroupLayout USARTContentPanelLayout = new javax.swing.GroupLayout(USARTContentPanel);
         USARTContentPanel.setLayout(USARTContentPanelLayout);
@@ -1496,40 +1364,40 @@ public class CurrentProject extends javax.swing.JFrame {
             USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(USARTContentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(USARTContentPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, USARTContentPanelLayout.createSequentialGroup()
-                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
                 .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, USARTContentPanelLayout.createSequentialGroup()
+                    .addGroup(USARTContentPanelLayout.createSequentialGroup()
                         .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ApplyPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(clockPolarityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(frameSizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fCPULabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(USARTContentPanelLayout.createSequentialGroup()
+                                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(stopBitSelectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(speedOPLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(parityModeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(modeOPLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 2, Short.MAX_VALUE))
+                            .addComponent(buadRateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(USARTContentPanelLayout.createSequentialGroup()
+                                .addGap(415, 415, 415)
+                                .addComponent(exitLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(USARTContentPanelLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(parityModeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(stopBitSelectComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(clockPolarityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fCPUComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(frameSizeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buadRateComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(modeOPComboBoxl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(speedOPComboBox, 0, 390, Short.MAX_VALUE)))))
+                    .addGroup(USARTContentPanelLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(USARTApplyStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(USARTApplyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         USARTContentPanelLayout.setVerticalGroup(
@@ -1538,52 +1406,45 @@ public class CurrentProject extends javax.swing.JFrame {
                 .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(USARTContentPanelLayout.createSequentialGroup()
                         .addComponent(exitLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel24)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
-                        .addComponent(ApplyPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(USARTContentPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator5)))
+                        .addGap(85, 85, 85)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(modeOPLabel)
+                            .addComponent(modeOPComboBoxl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(speedOPLabel)
+                            .addComponent(speedOPComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(parityModeLabel)
+                            .addComponent(parityModeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stopBitSelectLabel)
+                            .addComponent(stopBitSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(clockPolarityLabel)
+                            .addComponent(clockPolarityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fCPUComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fCPULabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(frameSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(frameSizeLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buadRateLabel)
+                            .addComponent(buadRateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                        .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(USARTApplyPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(USARTApplyStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(USARTContentPanelLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(USARTContentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         generalPanel.add(USARTContentPanel, "card4");
@@ -1606,7 +1467,7 @@ public class CurrentProject extends javax.swing.JFrame {
             .addGroup(projectNamePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(projectNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
                     .addComponent(projectNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1833,8 +1694,7 @@ public class CurrentProject extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(generalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(generalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1846,7 +1706,7 @@ public class CurrentProject extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1928,55 +1788,79 @@ public class CurrentProject extends javax.swing.JFrame {
         exitLabel2.setForeground(Color.BLACK);
     }//GEN-LAST:event_exitLabel2MouseExited
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    private void ADCApplyPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADCApplyPanelMouseMoved
+        DV.movingMouseStyle(ADCApplyPanel, ADCPointerApplyPanel, ADCApplyLabel, panelMovingColor, labelMovingColor);
+    }//GEN-LAST:event_ADCApplyPanelMouseMoved
 
-    private void ApplyPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanel1MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApplyPanel1MouseMoved
+    private void ADCApplyPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADCApplyPanelMouseClicked
+        if (Adc.isChanged() == true) {
 
-    private void ApplyPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanel1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApplyPanel1MouseClicked
+            Adc.setADCvalues(VRComboBox.getSelectedItem().toString(),
+                    adjustmentComboBox.getSelectedItem().toString(),
+                    autoTriggerComboBox.getSelectedItem().toString(),
+                    prescallerComboBox.getSelectedItem().toString(),
+                    channelNumComboBox.getSelectedItem().toString());
+            Adc.updateADCDriver();
+            ADCApplyStatus.setForeground(Color.GREEN);
+            ADCApplyStatus.setText("Successfully Applied !");
+        } else {
+            ADCApplyStatus.setForeground(Color.GREEN);
+            ADCApplyStatus.setText("No Changes !");
+        }
 
-    private void ApplyPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanel1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApplyPanel1MouseExited
+    }//GEN-LAST:event_ADCApplyPanelMouseClicked
 
-    private void ApplyPanel2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanel2MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApplyPanel2MouseMoved
+    private void ADCApplyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADCApplyPanelMouseExited
+        DV.exiteMouseStyle(ADCApplyPanel, ADCPointerApplyPanel, ADCApplyLabel);
+    }//GEN-LAST:event_ADCApplyPanelMouseExited
 
-    private void ApplyPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanel2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApplyPanel2MouseClicked
+    private void USARTApplyPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_USARTApplyPanelMouseMoved
+        DV.movingMouseStyle(USARTApplyPanel, USARTPointerApplyPanel, USARTApplyLabel, panelMovingColor, labelMovingColor);
+    }//GEN-LAST:event_USARTApplyPanelMouseMoved
 
-    private void ApplyPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanel2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ApplyPanel2MouseExited
+    private void USARTApplyPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_USARTApplyPanelMouseClicked
+        if (Usart.isChanged() == true) {
 
-    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox9ActionPerformed
+            Usart.setUSARTvalues(modeOPComboBoxl.getSelectedItem().toString(),
+                    speedOPComboBox.getSelectedItem().toString(),
+                    parityModeComboBox.getSelectedItem().toString(),
+                    stopBitSelectComboBox.getSelectedItem().toString(),
+                    clockPolarityComboBox.getSelectedItem().toString(),
+                    fCPUComboBox.getSelectedItem().toString(),
+                    frameSizeComboBox.getSelectedItem().toString(),
+                    buadRateComboBox.getSelectedItem().toString());
+            Usart.updateUSARTDriver();
+            USARTApplyStatus.setForeground(Color.GREEN);
+            USARTApplyStatus.setText("Successfully Applied !");
+        } else {
+            USARTApplyStatus.setForeground(Color.GREEN);
+            USARTApplyStatus.setText("No Changes !");
+        }
+    }//GEN-LAST:event_USARTApplyPanelMouseClicked
 
-    private void ApplyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanelMouseExited
-        DV.exiteMouseStyle(ApplyPanel, pointerApplyPanel, ApplyLabel);
-    }//GEN-LAST:event_ApplyPanelMouseExited
+    private void USARTApplyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_USARTApplyPanelMouseExited
+        DV.exiteMouseStyle(USARTApplyPanel, USARTPointerApplyPanel, USARTApplyLabel);
+    }//GEN-LAST:event_USARTApplyPanelMouseExited
 
-    private void ApplyPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanelMouseClicked
+    private void DIOApplyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DIOApplyPanelMouseExited
+        DV.exiteMouseStyle(DIOApplyPanel, DIOPointerApplyPanel, DIOApplyLabel);
+    }//GEN-LAST:event_DIOApplyPanelMouseExited
+
+    private void DIOApplyPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DIOApplyPanelMouseClicked
 
         if (Dio.isChanged() == true) {
-            applyStatus.setText("Successfully Applied !");
+            DIOApplyStatus.setForeground(Color.GREEN);
+            DIOApplyStatus.setText("Successfully Applied !");
             Dio.updateDIODriver();
         } else {
-            applyStatus.setText("No Changes !");
+            DIOApplyStatus.setForeground(Color.GREEN);
+            DIOApplyStatus.setText("No Changes !");
         }
-    }//GEN-LAST:event_ApplyPanelMouseClicked
+    }//GEN-LAST:event_DIOApplyPanelMouseClicked
 
-    private void ApplyPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplyPanelMouseMoved
-        DV.movingMouseStyle(ApplyPanel, pointerApplyPanel, ApplyLabel, panelMovingColor, labelMovingColor);
-    }//GEN-LAST:event_ApplyPanelMouseMoved
+    private void DIOApplyPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DIOApplyPanelMouseMoved
+        DV.movingMouseStyle(DIOApplyPanel, DIOPointerApplyPanel, DIOApplyLabel, panelMovingColor, labelMovingColor);
+    }//GEN-LAST:event_DIOApplyPanelMouseMoved
 
     private void PD7_LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD7_LabelMouseExited
         DVP.exiteMouseStyle(PD7_Label, 31);
@@ -2011,7 +1895,7 @@ public class CurrentProject extends javax.swing.JFrame {
     }//GEN-LAST:event_PD5_LabelMouseClicked
 
     private void PD5_LabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD5_LabelMouseMoved
-       DVP.movingMouseStyle(PD5_Label, labelMovingColor, Dio.getPinColor(29), 29);
+        DVP.movingMouseStyle(PD5_Label, labelMovingColor, Dio.getPinColor(29), 29);
     }//GEN-LAST:event_PD5_LabelMouseMoved
 
     private void PD4_LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PD4_LabelMouseExited
@@ -2195,7 +2079,7 @@ public class CurrentProject extends javax.swing.JFrame {
     }//GEN-LAST:event_PB6_LabelMouseMoved
 
     private void PB5_LabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB5_LabelMouseExited
-        DVP.exiteMouseStyle(PB5_Label, 12);
+        DVP.exiteMouseStyle(PB5_Label, 13);
     }//GEN-LAST:event_PB5_LabelMouseExited
 
     private void PB5_LabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PB5_LabelMouseClicked
@@ -2375,6 +2259,68 @@ public class CurrentProject extends javax.swing.JFrame {
         exitLabel.setForeground(Color.red);
     }//GEN-LAST:event_exitLabelMouseMoved
 
+    private void modeOPComboBoxlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeOPComboBoxlActionPerformed
+        if (modeOPComboBoxl.getSelectedItem().equals("SYNCHRONOUS")) {
+            speedOPComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(spdOp1));
+            clockPolarityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(clkPlrty1));
+        } else if (modeOPComboBoxl.getSelectedItem().equals("ASYNCHRONOUS")) {
+            speedOPComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(spdOp2));
+            clockPolarityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(clkPlrty2));
+        }
+    }//GEN-LAST:event_modeOPComboBoxlActionPerformed
+
+    private void VRComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VRComboBoxMouseClicked
+        ADCchanges();
+    }//GEN-LAST:event_VRComboBoxMouseClicked
+
+    private void adjustmentComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adjustmentComboBoxMouseClicked
+        ADCchanges();
+    }//GEN-LAST:event_adjustmentComboBoxMouseClicked
+
+    private void autoTriggerComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_autoTriggerComboBoxMouseClicked
+        ADCchanges();
+    }//GEN-LAST:event_autoTriggerComboBoxMouseClicked
+
+    private void prescallerComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prescallerComboBoxMouseClicked
+        ADCchanges();
+    }//GEN-LAST:event_prescallerComboBoxMouseClicked
+
+    private void channelNumComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_channelNumComboBoxMouseClicked
+        ADCchanges();
+    }//GEN-LAST:event_channelNumComboBoxMouseClicked
+
+    private void modeOPComboBoxlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modeOPComboBoxlMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_modeOPComboBoxlMouseClicked
+
+    private void speedOPComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_speedOPComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_speedOPComboBoxMouseClicked
+
+    private void parityModeComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_parityModeComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_parityModeComboBoxMouseClicked
+
+    private void stopBitSelectComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stopBitSelectComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_stopBitSelectComboBoxMouseClicked
+
+    private void clockPolarityComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clockPolarityComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_clockPolarityComboBoxMouseClicked
+
+    private void fCPUComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fCPUComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_fCPUComboBoxMouseClicked
+
+    private void frameSizeComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frameSizeComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_frameSizeComboBoxMouseClicked
+
+    private void buadRateComboBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buadRateComboBoxMouseClicked
+        USARTchanges();
+    }//GEN-LAST:event_buadRateComboBoxMouseClicked
+
     public void getPinsDirection() {
         Dio.setCurrentFile(currentFile);
         JLabel PinDirectionLabel[] = {PA0_Label, PA1_Label, PA2_Label, PA3_Label, PA4_Label, PA5_Label, PA6_Label, PA7_Label, PB0_Label, PB1_Label, PB2_Label, PB3_Label, PB4_Label, PB5_Label, PB6_Label, PB7_Label, PC0_Label, PC1_Label, PC2_Label, PC3_Label, PC4_Label, PC5_Label, PC6_Label, PC7_Label, PD0_Label, PD1_Label, PD2_Label, PD3_Label, PD4_Label, PD5_Label, PD6_Label, PD7_Label};
@@ -2385,10 +2331,41 @@ public class CurrentProject extends javax.swing.JFrame {
     public void togglePinDirection(JLabel PinDirectionLabel, int pinNum) {
         DVP.setLabelColorBeforeChange(Dio.togglePinDirection(pinNum, PinDirectionLabel), pinNum);
         if (Dio.isChanged() == true) {
-            applyStatus.setText("Changes Happened, Click Apply");
+            DIOApplyStatus.setForeground(Color.RED);
+            DIOApplyStatus.setText("Changes Happened, Click Apply");
         } else {
-            applyStatus.setText("");
+            DIOApplyStatus.setText("");
         }
+    }
+
+    public void ADCchanges() {
+
+        Adc.setChanged();
+        ADCApplyStatus.setForeground(Color.RED);
+        ADCApplyStatus.setText("Changes Happened, Click Apply");
+
+    }
+
+    public void USARTchanges() {
+        Usart.setChanged();
+        USARTApplyStatus.setForeground(Color.RED);
+        USARTApplyStatus.setText("Changes Happened, Click Apply");
+
+    }
+
+    public void getADCvalues() {
+        Adc.setCurrentFile(currentFile);
+        JComboBox ADCvalues[] = {VRComboBox, adjustmentComboBox, autoTriggerComboBox, prescallerComboBox, channelNumComboBox};
+        Adc.getDriverElementsValues();
+        Adc.setDriverElementsValues(ADCvalues);
+    }
+
+    public void getUSARTvalues() {
+        Usart.setCurrentFile(currentFile);
+        JComboBox USARTvalues[] = {modeOPComboBoxl, speedOPComboBox, parityModeComboBox, stopBitSelectComboBox,
+            clockPolarityComboBox, fCPUComboBox, frameSizeComboBox, buadRateComboBox};
+        Usart.getDriverElementsValues();
+        Usart.setDriverElementsValues(USARTvalues);
     }
 
     /**
@@ -2430,24 +2407,25 @@ public class CurrentProject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ADCApplyIconLabel;
+    private javax.swing.JLabel ADCApplyLabel;
+    private javax.swing.JPanel ADCApplyPanel;
+    private javax.swing.JLabel ADCApplyStatus;
     private javax.swing.JPanel ADCContentPanel;
     private javax.swing.JLabel ADCIconLabel;
     private javax.swing.JLabel ADCLabel;
     private javax.swing.JPanel ADCPanel;
+    private javax.swing.JPanel ADCPointerApplyPanel;
     private javax.swing.JLabel AVRIcon;
-    private javax.swing.JLabel ApplyIconLabel;
-    private javax.swing.JLabel ApplyIconLabel1;
-    private javax.swing.JLabel ApplyIconLabel2;
-    private javax.swing.JLabel ApplyLabel;
-    private javax.swing.JLabel ApplyLabel1;
-    private javax.swing.JLabel ApplyLabel2;
-    private javax.swing.JPanel ApplyPanel;
-    private javax.swing.JPanel ApplyPanel1;
-    private javax.swing.JPanel ApplyPanel2;
+    private javax.swing.JLabel DIOApplyIconLabel;
+    private javax.swing.JLabel DIOApplyLabel;
+    private javax.swing.JPanel DIOApplyPanel;
+    private javax.swing.JLabel DIOApplyStatus;
     private javax.swing.JPanel DIOContentPanel;
     private javax.swing.JLabel DIOIconLabel;
     private javax.swing.JLabel DIOLabel;
     private javax.swing.JPanel DIOPanel;
+    private javax.swing.JPanel DIOPointerApplyPanel;
     private javax.swing.JLabel PA0_Label;
     private javax.swing.JLabel PA1_Label;
     private javax.swing.JLabel PA2_Label;
@@ -2480,75 +2458,52 @@ public class CurrentProject extends javax.swing.JFrame {
     private javax.swing.JLabel PD5_Label;
     private javax.swing.JLabel PD6_Label;
     private javax.swing.JLabel PD7_Label;
+    private javax.swing.JLabel USARTApplyIconLabel;
+    private javax.swing.JLabel USARTApplyLabel;
+    private javax.swing.JPanel USARTApplyPanel;
+    private javax.swing.JLabel USARTApplyStatus;
     private javax.swing.JPanel USARTContentPanel;
     private javax.swing.JLabel USARTIconLabel;
     private javax.swing.JLabel USARTLabel;
     private javax.swing.JPanel USARTPanel;
-    private javax.swing.JLabel applyStatus;
+    private javax.swing.JPanel USARTPointerApplyPanel;
+    private javax.swing.JComboBox<String> VRComboBox;
+    private javax.swing.JLabel VRLabel;
+    private javax.swing.JComboBox<String> adjustmentComboBox;
+    private javax.swing.JLabel adjustmentLabel;
+    private javax.swing.JComboBox<String> autoTriggerComboBox;
+    private javax.swing.JLabel autoTriggerLabel;
+    private javax.swing.JComboBox<String> buadRateComboBox;
+    private javax.swing.JLabel buadRateLabel;
+    private javax.swing.JComboBox<String> channelNumComboBox;
+    private javax.swing.JLabel channelNumLabel;
+    private javax.swing.JComboBox<String> clockPolarityComboBox;
+    private javax.swing.JLabel clockPolarityLabel;
     private javax.swing.JLabel exitLabel;
     private javax.swing.JLabel exitLabel1;
     private javax.swing.JLabel exitLabel2;
+    private javax.swing.JComboBox<String> fCPUComboBox;
+    private javax.swing.JLabel fCPULabel;
+    private javax.swing.JComboBox<String> frameSizeComboBox;
+    private javax.swing.JLabel frameSizeLabel;
     private javax.swing.JPanel generalPanel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JComboBox<String> modeOPComboBoxl;
+    private javax.swing.JLabel modeOPLabel;
+    private javax.swing.JComboBox<String> parityModeComboBox;
+    private javax.swing.JLabel parityModeLabel;
     private javax.swing.JPanel pointerADCPanel;
-    private javax.swing.JPanel pointerApplyPanel;
-    private javax.swing.JPanel pointerApplyPanel1;
-    private javax.swing.JPanel pointerApplyPanel2;
     private javax.swing.JPanel pointerDIOPanel;
     private javax.swing.JPanel pointerUSARTPanel;
+    private javax.swing.JComboBox<String> prescallerComboBox;
+    private javax.swing.JLabel prescallerLabel;
     private javax.swing.JLabel projectNameLabel;
     private javax.swing.JPanel projectNamePanel;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JComboBox<String> speedOPComboBox;
+    private javax.swing.JLabel speedOPLabel;
+    private javax.swing.JComboBox<String> stopBitSelectComboBox;
+    private javax.swing.JLabel stopBitSelectLabel;
     // End of variables declaration//GEN-END:variables
 }
