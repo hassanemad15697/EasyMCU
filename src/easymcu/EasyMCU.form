@@ -756,7 +756,7 @@
                       <Component id="exitLabel1" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="easyMCULabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -831,7 +831,7 @@
                       <Component id="exitLabel2" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="easyMCULabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -906,7 +906,7 @@
                       <Component id="exitLabel3" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="easyMCULabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

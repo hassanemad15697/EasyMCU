@@ -47,6 +47,15 @@
 #define TIMER_COUNTER_1_OVERFLOW		6
 #define TIMER_COUNTER_1_CAPTURE_EVENT	7
 
+#define DIO_U8_PIN_0	0
+#define DIO_U8_PIN_1	1
+#define DIO_U8_PIN_2	2
+#define DIO_U8_PIN_3	3
+#define DIO_U8_PIN_4	4
+#define DIO_U8_PIN_5	5
+#define DIO_U8_PIN_6	6
+#define DIO_U8_PIN_7	7
+
 
 /****************************************************************/
 /* Description    :  This function used to initialize ADC 	    */

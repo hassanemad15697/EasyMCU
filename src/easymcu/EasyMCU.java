@@ -596,7 +596,7 @@ public class EasyMCU extends javax.swing.JFrame {
                 .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(easyMCULabel1)
-                .addGap(0, 448, Short.MAX_VALUE))
+                .addGap(0, 452, Short.MAX_VALUE))
         );
 
         generalPanel.add(calculatorContentPanel, "card3");
@@ -646,7 +646,7 @@ public class EasyMCU extends javax.swing.JFrame {
                 .addComponent(exitLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(easyMCULabel2)
-                .addGap(0, 448, Short.MAX_VALUE))
+                .addGap(0, 452, Short.MAX_VALUE))
         );
 
         generalPanel.add(learnContentPanel1, "card3");
@@ -696,7 +696,7 @@ public class EasyMCU extends javax.swing.JFrame {
                 .addComponent(exitLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(easyMCULabel3)
-                .addGap(0, 448, Short.MAX_VALUE))
+                .addGap(0, 452, Short.MAX_VALUE))
         );
 
         generalPanel.add(aboutContentPanel, "card3");
